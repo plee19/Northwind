@@ -3,7 +3,11 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Northwind</title>
+    <link rel="icon" type="image/png" href="~/favicon.ico" />
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'
+          type='text/css'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -16,34 +20,49 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <a href="~/Home/Index" class="navbar-brand"><i class="fa fa-home"></i> Home</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                <li>
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Lessons<b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    <li><a href="indexlesson2.html">Lesson 2</a></li>
-                    <li><a href="indexlesson3.html">Lesson 3</a></li>
-                    <li><a href="indexlesson4.html">Lesson 4</a></li>
-                    <li><a href="indexlesson5.html">Lesson 5</a></li>
-                    <li><a href="birthday.html">Birthday</a></li>
-                    <li><a href="/Free/Bird">Free Bird</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-database"></i> Products<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="~/Product/Category"><i class="fa fa-list"></i> Browse Categories</a></li>
+                            <li><a href="~/Product/Search" id="search"><i class="fa fa-search"></i> Product Search</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="~/Product/Discount"><i class="fa fa-tag"></i> Current Discounts</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-database"></i> Customers<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="~/Customer/Account"><i class="fas fa-user-circle"></i> Account</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="~/Customer/Register" id="search"><i class="fas fa-wpforms"></i> Register</a></li>
+                            <li><a href="~/Customer/Signin"><i class="fas fa-sign-in"></i> Signin</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Lessons<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="indexlesson2.html">Lesson 2</a></li>
+                            <li><a href="indexlesson3.html">Lesson 3</a></li>
+                            <li><a href="indexlesson4.html">Lesson 4</a></li>
+                            <li><a href="indexlesson5.html">Lesson 5</a></li>
+                            <li><a href="birthday.html">Birthday</a></li>
+                            <li><a href="/Free/Bird">Free Bird</a></li>
+                            <li><a href="/Home/AddNumbers">Add Numbers</a></li>
+                            <li><a href="/Home/Stuff">Stuff</a></li>
+                            <li><a href="/Home/DisplayList">Display List</a></li>
+                            <li><a href="/Home/PrimaryColors">Primary Colors</a></li>
+                        </ul>
+                    </li>
                 </ul>
-                </li>
-                    </ul>
             </div>
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")

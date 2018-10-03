@@ -1,10 +1,16 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 70px;
     padding-bottom: 20px;
+    font-size: 1.5em;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
+body, h1, h2, h3, h4, h4, h6 {
+    font-family: 'Lato', sans-serif;
+    color: #666;
+}
+
+    /* Set padding to keep content from hitting the edges */
+    .body-content {
     padding-left: 15px;
     padding-right: 15px;
 }
@@ -26,4 +32,25 @@ textarea {
 .discount:hover {
     text-decoration: none !important;
     color: crimson;
+}
+
+a:hover{
+    text-decoration:none;
+    color: #000;
+}
+
+a:hover,a:active,a:focus,a:visited { outline: 0; }
+.font-md{ font-size:1.5em; }
+.font-lg{ font-size:1.8em; }
+
+.jumbotron {
+    border: 1px solid rgba(0,0,0,0.4);
+}
+
+.jumbotron h1 .fa-compass {
+    font-size: 70%;
+}
+
+.jumbotron h1 {
+    text-shadow: 2px 2px 0 rgba(255,255,255,0.7), 3px 3px 4px rgba(0,0,0,0.6);
 }

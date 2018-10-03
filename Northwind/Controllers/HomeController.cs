@@ -13,17 +13,40 @@ namespace Northwind.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Stuff(int id = 0)
         {
-            ViewBag.Message = "Your application description page.";
-
+            ViewBag.qty = id;
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult AddNumbers(FormCollection form)
         {
-            ViewBag.Message = "Your contact page.";
+            double num1;
+            double num2;
 
+            var num1Success = Double.TryParse(form["num1"], out num1);
+            var num2Success = Double.TryParse(form["num2"], out num2);
+
+            if (num1Success && num2Success)
+            {
+                ViewBag.Total = num1 + num2;
+                ViewBag.number1 = num1;
+                ViewBag.number2 = num2;
+            }
+
+
+
+            // ViewBag.Total = ViewBag.number1 + ViewBag.number2 + ViewBag.number3;
+            return View();
+        }
+        public ActionResult DisplayList()
+        {
+            ViewBag.Names = new string[] { "Joe", "Jim", "Janice", "Joan" };
+            return View();
+        }
+
+        public ActionResult PrimaryColors()
+        {
             return View();
         }
     }

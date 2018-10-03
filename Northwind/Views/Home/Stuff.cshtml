@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Stuff";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    double price = 1.5;
+    int qty = ViewBag.qty == null ? 0 : ViewBag.qty;
+
+    double total = price * qty;
+}
+
+<div class="panel panel-info">
+    <div class="panel-heading"><h3>Order Details</h3></div>
+    <div class="panel-body">
+        <h3>QTY   : @qty</h3>
+        <h3>PRICE : @price.ToString("C")</h3>
+        <h3>TOTAL : @total.ToString("C")</h3>
+    </div>
+</div>
+

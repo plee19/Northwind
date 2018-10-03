@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "AddNumbers";
+}
+
+<h3>num1: @ViewBag.number1</h3>
+<h3>num2: @ViewBag.number2</h3>
+<h2>@ViewBag.Total</h2>
+<form role="form" method="post" action="@Url.Action("AddNumbers", "Home")">
+    <div class="form-group">
+        @Html.Label("num1", "First number")
+        @Html.TextBox("num1", null, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.Label("num2", "Second number")
+        @Html.TextBox("num2", null, new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>

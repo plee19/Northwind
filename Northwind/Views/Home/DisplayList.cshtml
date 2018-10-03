@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "DisplayList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DisplayList</h2>
+
+<h3>List of Names</h3>
+<ul>
+    @{
+        foreach (var name in ViewBag.Names)
+        {
+            <li>@name</li>
+        }
+    }
+</ul>

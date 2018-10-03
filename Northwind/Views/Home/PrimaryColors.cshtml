@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Primary Colors";
+}
+
+<h2>Primary Colors</h2>
+<form>
+    <fieldset>
+        Select Color 1 <select id="color1" name="color1">
+            <option value=""></option>
+            <option value="0">Red</option>
+            <option value="1">Green</option>
+            <option value="2">Blue</option>
+        </select>
+        Select Color 2 <select id="color2" name="color2">
+            <option value=""></option>
+            <option value="0">Red</option>
+            <option value="1">Green</option>
+            <option value="2">Blue</option>
+        </select>
+
+        <p><input type="submit" value="Submit" /> </p>
+
+        <p>@ViewBag.color1 AND @ViewBag.color2 MAKE @ViewBag.color3</p>
+
+    </fieldset>
+</form>

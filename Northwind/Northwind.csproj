@@ -214,8 +214,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Product\Category.cshtml" />
     <Content Include="Views\Product\Discount.cshtml" />
@@ -228,12 +226,18 @@
     <Content Include="Views\Bank\Debit.cshtml" />
     <Content Include="Views\Bank\Test.cshtml" />
     <Content Include="Views\Car\About.cshtml" />
+    <Content Include="Views\Customer\Account.cshtml" />
+    <Content Include="Views\Customer\Register.cshtml" />
+    <Content Include="Views\Customer\Signin.cshtml" />
+    <Content Include="Views\Home\Stuff.cshtml" />
+    <Content Include="Views\Home\DisplayList.cshtml" />
+    <Content Include="Views\Home\AddNumbers.cshtml" />
+    <Content Include="Views\Home\PrimaryColors.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Colors\" />
-    <Folder Include="Views\Customer\" />
     <Folder Include="Views\Hello\" />
   </ItemGroup>
   <ItemGroup>
