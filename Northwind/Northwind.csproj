@@ -149,6 +149,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="birthday.html" />
     <Content Include="Content\animate.css" />
     <Content Include="Content\jquery-ui.min.css" />
     <Content Include="images\black.png" />

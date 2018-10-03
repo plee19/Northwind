@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
+VisualStudioVersion = 15.0.28010.2016
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind", "Northwind\Northwind.csproj", "{5A2A4E54-8E45-400A-857B-7CD278A58C7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControllersLab", "..\ControllersLab\ControllersLab\ControllersLab.csproj", "{1D81F1D2-E469-46A3-A57E-7A2E1DAAB6BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControllersLab.UnitTest", "..\ControllersLab\ControllersLab.UnitTest\ControllersLab.UnitTest.csproj", "{FE3A81DF-4A9B-4D44-92FD-BB22A8DD4D87}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,11 +19,19 @@ Global
 		{5A2A4E54-8E45-400A-857B-7CD278A58C7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A2A4E54-8E45-400A-857B-7CD278A58C7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A2A4E54-8E45-400A-857B-7CD278A58C7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D81F1D2-E469-46A3-A57E-7A2E1DAAB6BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D81F1D2-E469-46A3-A57E-7A2E1DAAB6BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D81F1D2-E469-46A3-A57E-7A2E1DAAB6BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D81F1D2-E469-46A3-A57E-7A2E1DAAB6BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE3A81DF-4A9B-4D44-92FD-BB22A8DD4D87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE3A81DF-4A9B-4D44-92FD-BB22A8DD4D87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE3A81DF-4A9B-4D44-92FD-BB22A8DD4D87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE3A81DF-4A9B-4D44-92FD-BB22A8DD4D87}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {5ED5EE1F-5659-4006-8B84-5B7746C9D9BD}
+		SolutionGuid = {E256E090-3422-4D9D-8FB4-F80C9875783E}
 	EndGlobalSection
 EndGlobal
