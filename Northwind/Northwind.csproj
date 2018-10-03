@@ -142,7 +142,15 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BankController.cs" />
+    <Compile Include="Controllers\CarController.cs" />
+    <Compile Include="Controllers\ColorsController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\FooController.cs" />
+    <Compile Include="Controllers\FreeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PizzaController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -209,10 +217,24 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Product\Category.cshtml" />
+    <Content Include="Views\Product\Discount.cshtml" />
+    <Content Include="Views\Product\Search.cshtml" />
+    <Content Include="Views\Pizza\Bake.cshtml" />
+    <Content Include="Views\Pizza\Eat.cshtml" />
+    <Content Include="Views\Free\Bird.cshtml" />
+    <Content Include="Views\Foo\Bar.cshtml" />
+    <Content Include="Views\Foo\Index.cshtml" />
+    <Content Include="Views\Bank\Debit.cshtml" />
+    <Content Include="Views\Bank\Test.cshtml" />
+    <Content Include="Views\Car\About.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Colors\" />
+    <Folder Include="Views\Customer\" />
+    <Folder Include="Views\Hello\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
