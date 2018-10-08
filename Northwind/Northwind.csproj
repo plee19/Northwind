@@ -237,6 +237,7 @@
     <Content Include="Views\Home\Lesson3.cshtml" />
     <Content Include="Views\Home\Lesson4.cshtml" />
     <Content Include="Views\Home\Lesson5.cshtml" />
+    <Content Include="Views\Home\Birthday.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
