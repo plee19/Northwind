@@ -49,5 +49,25 @@ namespace Northwind.Controllers
         {
             return View();
         }
+
+        public ActionResult Lesson2()
+        {
+            return View();
+        }
+
+        public ActionResult Lesson3()
+        {
+            return View();
+        }
+
+        public ActionResult Lesson4()
+        {
+            return View();
+        }
+
+        public ActionResult Lesson5()
+        {
+            return View();
+        }
     }
 }

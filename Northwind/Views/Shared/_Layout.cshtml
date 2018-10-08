@@ -45,11 +45,14 @@
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Lessons<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="indexlesson2.html">Lesson 2</a></li>
-                            <li><a href="indexlesson3.html">Lesson 3</a></li>
-                            <li><a href="indexlesson4.html">Lesson 4</a></li>
-                            <li><a href="indexlesson5.html">Lesson 5</a></li>
-                            <li><a href="birthday.html">Birthday</a></li>
+                            <li><a href="~/Home/Lesson2">Lesson 2</a></li>
+                            <li><a href="~/Home/Lesson3">Lesson 3</a></li>
+                            <li><a href="~/Home/Lesson4">Lesson 4</a></li>
+                            <li><a href="~/Home/Lesson5">Lesson 5</a></li>
+                            <li><a href="~/Home/Birthday">Birthday</a></li>
+                            <li><a href="/Foo/Bar">Foo/Bar</a></li>
+                            <li><a href="/Pizza/Bake">Bake Pizza</a></li>
+                            <li><a href="/Pizza/Eat/5">Eat Pizza</a></li>
                             <li><a href="/Free/Bird">Free Bird</a></li>
                             <li><a href="/Home/AddNumbers">Add Numbers</a></li>
                             <li><a href="/Home/Stuff">Stuff</a></li>
@@ -64,6 +67,12 @@
     <div class="container body-content">
         @RenderBody()
     </div>
+    <nav class="navbar navbar-inverse navbar-fixed-bottom">
+        <div class="container">
+            <p class="navbar-text"><i>&copy; 2018 Paul Lee</i></p>
+            <button type="button" class="btn btn-default navbar-btn pull-right">Sign In</button>
+        </div>
+    </nav>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

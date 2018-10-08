@@ -4,19 +4,21 @@
 }
 
 <h2>Primary Colors</h2>
-<form>
+<h4>Color1: @ViewBag.color1</h4>
+<h4>Color2: @ViewBag.color2</h4>
+<form role="form" method="post" action="@Url.Action("PrimaryColors", "Home")">
     <fieldset>
         Select Color 1 <select id="color1" name="color1">
             <option value=""></option>
-            <option value="0">Red</option>
-            <option value="1">Green</option>
-            <option value="2">Blue</option>
+            <option value="RED">Red</option>
+            <option value="GREEN">Green</option>
+            <option value="BLUE">Blue</option>
         </select>
         Select Color 2 <select id="color2" name="color2">
             <option value=""></option>
-            <option value="0">Red</option>
-            <option value="1">Green</option>
-            <option value="2">Blue</option>
+            <option value="RED">Red</option>
+            <option value="GREEN">Green</option>
+            <option value="BLUE">Blue</option>
         </select>
 
         <p><input type="submit" value="Submit" /> </p>
