@@ -40,7 +40,7 @@
                 @{
                     foreach (var balloon in ViewBag.balloons)
                     {
-                        string imagename = "../Content/" + balloon + ".png";
+                        string imagename = "/images/" + balloon + ".png";
                         string id = balloon + "Img";
                         <img src="@imagename" alt="@balloon" class="ball" id="@id" />
                     }
