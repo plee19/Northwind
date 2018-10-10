@@ -72,6 +72,14 @@ namespace Northwind.Controllers
 
         public ActionResult Birthday()
         {
+            string[] balloons = { "Red", "Green", "Purple" };
+            ViewBag.balloons = balloons;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Birthday(FormCollection form)
+        {
             return View();
         }
     }

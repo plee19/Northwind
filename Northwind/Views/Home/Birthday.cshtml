@@ -1,85 +1,56 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Birthday";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width-device-width" />
-    <link href="Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="Content/jquery-ui.min.css" rel="stylesheet" />
-    <link href="Content/animate.css" rel="stylesheet" />
-    <link href="Content/Site.css" rel="stylesheet" />
-    <script src="Scripts/jquery-1.10.2.min.js"></script>
-    <script src="Scripts/bootstrap.min.js"></script>
-    <script src="Scripts/jquery-ui.min.js"></script>
-    <script>
-        $(function () {
-            $('#birthday').datepicker();
-            $('.ball').draggable();
-            var randomNumber = Math.floor(Math.random() * effectArray.length);
-            var effectArray = ["bounce", "flash", "pulse", "rubberBand", "shake", "swing", "tada"];
-            $('h1').addClass('animated ' + effectArray[randomNumber]);
 
-            $('.bx').each(function () {
-                $(this).is(':checked') ?
-                    $('#' + $(this).attr('id') + 'Img').css('visibility', 'visible') :
-                    $('#' + $(this).attr('id') + 'Img').css('visibility', 'hidden');
-            });
-
-            $('.bx').change(function () {
-                $('#' + $(this).attr('id') + 'Img').css('visibility', 'visible');
-                $(this).is(':checked') ?
-                    $('#' + $(this).attr('id') + 'Img').removeClass().addClass('animated bounceInDown') :
-                    $('#' + $(this).attr('id') + 'Img').addClass('animated bounceOutUp');
-            });
-
-        });
-
-    </script>
-    </head>
-    <div class="container">
-        <h1>Happy Birthday!</h1>
-        <hr />
-
-        <form role="form">
-            <div class="row">
-                <!--Data Entry-->
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" class="form-control" />
-                    </div>
-                    <div>
-                        <label for="birthday">Birthday</label>
-                        <input type="text" id="birthday" class="form-control" />
-                    </div>
-                    <!--Balloon Choice-->
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title"><strong>Select your favorite balloons</strong></h3>
-                        </div>
-                        <div class="panel-body">
-                            <div class="checkbox">
-                                <label><input type="checkbox" class="bx" id="rb" />Red Balloons</label>
-
-                            </div>
-                            <div class="checkbox">
-                                <label><input type="checkbox" class="bx" id="gb" />Green Balloons</label>
-                            </div>
-                            <div class="checkbox">
-                                <label><input type="checkbox" class="bx" id="pb" />Purple Balloons</label>
-                            </div>
-                        </div>
-                    </div>
-                    <button type="button" class="btn btn-default">Submit</button>
+<!-- content -->
+<div class="container" style="min-width:480px;">
+    <h1>Happy Birthday!</h1>
+    <hr />
+    <form role="form" action="" method="post">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    @Html.Label("name", "Name")
+                    @Html.TextBox("name", null, new { placeholder = "Enter name", required = "required", @class = "form-control" })
                 </div>
-                <!--Balloons-->
-                <div class="col-sm-6">
-                    <img src="~/images/red.png" class="ball" id="rbImg" />
-                    <img src="~/images/green.png" class="ball" id="gbImg" />
-                    <img src="~/images/purple.png" class="ball" id="pbImg" />
+                <div class="form-group">
+                    @Html.Label("birthday", "Birthday")
+                    @Html.TextBox("birthday", null, new { placeholder = "Enter birthday", required = "required", @class = "form-control" })
                 </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><strong>Select your favorite balloons</strong></h3>
+                    </div>
+                    <div class="panel-body">
+                        @{
+                            foreach (var balloon in ViewBag.balloons)
+                            {
+                                String ball = Convert.ToString(balloon);
+                                <div class="checkbox">
+                                    @Html.CheckBox(ball, false, new { @class = "bx" })
+                                    @Html.Label(ball, ball + " balloons")
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
             </div>
-        </form>
-    </div>
+            <div class="col-sm-6" style="text-align:center;">
+                @{
+                    foreach (var balloon in ViewBag.balloons)
+                    {
+                        string imagename = "../Content/" + balloon + ".png";
+                        string id = balloon + "Img";
+                        <img src="@imagename" alt="@balloon" class="ball" id="@id" />
+                    }
+                }
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts
+{
+<script src="~/Scripts/birthday.js"></script>
+}
