@@ -6,24 +6,26 @@
 <h2>Primary Colors</h2>
 <h4>Color1: @ViewBag.color1</h4>
 <h4>Color2: @ViewBag.color2</h4>
-<form role="form" method="post" action="@Url.Action("PrimaryColors", "Home")">
+<form role="form"  action="" method="POST">
     <fieldset>
-        Select Color 1 <select id="color1" name="color1">
-            <option value=""></option>
-            <option value="RED">Red</option>
-            <option value="GREEN">Green</option>
-            <option value="BLUE">Blue</option>
+        Select Color 1 <select class="form-control " id="color1" name="color1">
+            <option></option>
+            <option>red</option>
+            <option>blue</option>
+            <option>green</option>
         </select>
-        Select Color 2 <select id="color2" name="color2">
-            <option value=""></option>
-            <option value="RED">Red</option>
-            <option value="GREEN">Green</option>
-            <option value="BLUE">Blue</option>
+        Select Color 2 <select class="form-control" id="color2" name="color2">
+            <option></option>
+            <option>red</option>
+            <option>blue</option>
+            <option>green</option>
         </select>
 
         <p><input type="submit" value="Submit" /> </p>
 
-        <p>@ViewBag.color1 AND @ViewBag.color2 MAKE @ViewBag.color3</p>
+        <h3><span style="color: @ViewBag.Color1;">@ViewBag.Color1</span> and
+        <span style="color: @ViewBag.Color2;">@ViewBag.Color2</span> make 
+        <span style="color: @ViewBag.Color3">@ViewBag.Color3</span></h3>
 
     </fieldset>
 </form>
