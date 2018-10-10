@@ -69,10 +69,10 @@ namespace Northwind.Controllers
         {
             return View();
         }
-
+        string[] balloons = { "Red", "Blue", "Green", "Purple" };
         public ActionResult Birthday()
         {
-            string[] balloons = { "Red", "Green", "Purple" };
+
             ViewBag.balloons = balloons;
             return View();
         }
@@ -80,7 +80,28 @@ namespace Northwind.Controllers
         [HttpPost]
         public ActionResult Birthday(FormCollection form)
         {
-            return View();
+            List<string> balloonList = new List<string>();
+            ViewBag.ResultName = form["name"];
+            ViewBag.ResultBD = form["birthday"];
+
+            /*var balloons = form.AllKeys
+                .Where(k => k.StartsWith("balloon"))
+                .Select(k => form[k]);*/
+
+            foreach (var balloon in balloons)
+            {
+                var b = form[balloon];
+                var checker = b.Split(',');
+                var isChecked = Convert.ToBoolean(checker[0]);
+                if (isChecked)
+                {
+                    balloonList.Add(balloon);
+                }
+            }
+            ViewBag.BalloonList = balloonList;
+
+            return View("Results");
         }
+
     }
 }

@@ -32,7 +32,9 @@
                                 </div>
                             }
                         }
+                        <input type="checkbox" id="checkAll" /> Check/Uncheck All
                     </div>
+
                 </div>
                 <button type="submit" class="btn btn-default">Submit</button>
             </div>
@@ -52,5 +54,10 @@
 
 @section Scripts
 {
-<script src="~/Scripts/birthday.js"></script>
+    <script src="~/Scripts/birthday.js"></script>
+    <script>
+        $('#checkAll').click(function () {
+            $('input:checkbox.bx').prop('checked', this.checked);
+        });
+    </script>
 }
