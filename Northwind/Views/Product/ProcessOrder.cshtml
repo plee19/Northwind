@@ -1,0 +1,42 @@
+﻿@using Northwind.Models;
+@model IEnumerable<Order>
+@{
+    /**/
+
+    ViewBag.Title = "ProcessOrder";
+    double total = 0.00;
+}
+
+<h2>Your Order</h2>
+
+<table>
+    <tr>
+        <th colspan="2">Order Details</th>
+    </tr>
+    <tr></tr>
+    <tr>
+        <th>Item</th>
+        <th>Qty</th>
+        <th>Unit Price</th>
+        <th>Unit Total</th>
+    </tr>
+    @foreach (Order o in Model)
+    {
+        var subtotal = o.Prod.Price * o.Qty;
+        <tr>
+            <td>@o.Prod.Name</td>
+            <td>@o.Qty</td>
+            <td>@o.Prod.Price</td>
+            <td>@subtotal</td>
+        </tr>
+
+        total += (o.Prod.Price * o.Qty);
+    }
+</table>
+<h3>
+    Thanks for your order, @ViewBag.Name! As soon as we receive your payment of @total, we will ship your items!<br />
+    @ViewBag.Name<br />
+    @ViewBag.Address<br />
+    @ViewBag.City, @ViewBag.State @ViewBag.Zip
+</h3>
+
