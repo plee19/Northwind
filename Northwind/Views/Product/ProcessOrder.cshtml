@@ -26,15 +26,15 @@
         <tr>
             <td>@o.Prod.Name</td>
             <td>@o.Qty</td>
-            <td>@o.Prod.Price</td>
-            <td>@subtotal</td>
+            <td>$@o.Prod.Price</td>
+            <td>$@subtotal</td>
         </tr>
 
         total += (o.Prod.Price * o.Qty);
     }
 </table>
 <div>
-    <h3>Thanks for your order, @ViewBag.Name! As soon as we receive your payment of @total.ToString("0.00"), we will ship your items!</h3><br />
+    <h3>Thanks for your order, @ViewBag.Name! As soon as we receive your payment of $@total.ToString("0.00"), we will ship your items!</h3><br />
         @ViewBag.Name<br />
         @ViewBag.Address<br />
         @ViewBag.City, @ViewBag.State @ViewBag.Zip

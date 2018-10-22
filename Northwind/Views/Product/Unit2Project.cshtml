@@ -6,6 +6,9 @@
 
 <h3>Order Your Products</h3>
 
+<div>
+    <p class="error"></p>
+</div>
 <form action="@Url.Action("ProcessOrder", "Product")" id="submitForm" method="post">
     <table class="table table-striped table-bordered">
         <tr>
@@ -29,7 +32,7 @@
                     @Html.DisplayFor(modelItem => item.Price)
                 </td>
                 <td>
-                    <input type="number" name="@item.Id" id="@item.Id" class="form-control qty" value="0" />
+                    <input type="number" name="@item.Id" id="@item.Id" class="form-control qty" value="0" min="0" />
                 </td>
                 <td id="subtotal_@item.Id" class="hidden">
                     0.00
@@ -97,7 +100,8 @@
                 zip: "required",
                 qty: {
                     required: true,
-                    min: 0
+                    min: 0,
+                    digits: true
                 }
             },
             messages: {
@@ -108,7 +112,16 @@
                 zip: "Zip is required",
                 qty: "Qty must be positive"
             }
-        });
+        });
+
+        $("#submitForm").on('submit', function (e) {
+            var isvalid = $("#submitForm").valid();
+            if (!isvalid) {
+                e.preventDefault();
+                $("#error").innerHTML = "Invalid entry.";
+            }
+        });
+
         $(function () {
             $('.hidden').removeClass('hidden');
 
@@ -116,19 +129,21 @@
                 $('#' + this.id).val(0);
             });
             $('input.qty').change(function () {
-                var qty = $('#' + this.id).val();
-                var price = $('#price_' + this.id).html();
-                $('#subtotal_' + this.id).html((qty * price).toFixed(2));
-                // 1. Iterate over all subtotals
-                // 2. add, and
-                // 3. display in the #total field
-                var total = 0.00;
-                // 1
-                $('.qty').each(function () {
-                    // 2
-                    total += Number($('#subtotal_' + this.id).html());
+                if ($('#' + this.id).val() >= 0) {
+                    var qty = $('#' + this.id).val();
+                    var price = $('#price_' + this.id).html();
+                    $('#subtotal_' + this.id).html((qty * price).toFixed(2));
+                    // 1. Iterate over all subtotals
+                    // 2. add, and
+                    // 3. display in the #total field
+                    var total = 0.00;
+                    // 1
+                    $('.qty').each(function () {
+                        // 2
+                        total += Number($('#subtotal_' + this.id).html());
 
-                });
+                    })
+                };
                 // 3
                 $('#total').html(total.toFixed(2));
             });
