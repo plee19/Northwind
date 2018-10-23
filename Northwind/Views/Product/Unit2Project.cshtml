@@ -50,31 +50,31 @@
         <div class="col-sm-12">
             <div class="form-group">
                 @Html.Label("name", "Name")
-                @Html.TextBox("name", null, new { placeholder = "Enter name", required = "required", @class = "form-control" })
+                @Html.TextBox("name", null, new { placeholder = "Enter name", @class = "form-control" })
             </div>
         </div>
         <div class="col-sm-9">
             <div class="form-group">
                 @Html.Label("address", "Address")
-                @Html.TextBox("address", null, new { placeholder = "Enter address", required = "required", @class = "form-control" })
+                @Html.TextBox("address", null, new { placeholder = "Enter address", @class = "form-control" })
             </div>
         </div>
         <div class="col-sm-4">
             <div class="form-group">
                 @Html.Label("city", "City")
-                @Html.TextBox("city", null, new { placeholder = "Enter city", required = "required", @class = "form-control" })
+                @Html.TextBox("city", null, new { placeholder = "Enter city", @class = "form-control" })
             </div>
         </div>
         <div class="col-sm-4">
             <div class="form-group">
                 @Html.Label("state", "State")
-                @Html.TextBox("state", null, new { placeholder = "Enter state", required = "required", @class = "form-control" })
+                @Html.TextBox("state", null, new { placeholder = "Enter state", @class = "form-control" })
             </div>
         </div>
         <div class="col-sm-4">
             <div class="form-group">
                 @Html.Label("zip", "Zip")
-                @Html.TextBox("zip", null, new { placeholder = "Enter zip", required = "required", @class = "form-control" })
+                @Html.TextBox("zip", null, new { placeholder = "Enter zip", @class = "form-control" })
             </div>
         </div>
     </div>
@@ -91,36 +91,6 @@
 @section scripts {
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
     <script>
-        $("#submitForm").validate({
-            rules: {
-                name: "required",
-                address: "required",
-                city: "required",
-                state: "required",
-                zip: "required",
-                qty: {
-                    required: true,
-                    min: 0,
-                    digits: true
-                }
-            },
-            messages: {
-                name: "Name is required",
-                address: "Address is required",
-                city: "City is required",
-                state: "State is required",
-                zip: "Zip is required",
-                qty: "Qty must be positive"
-            }
-        });
-
-        $("#submitForm").on('submit', function (e) {
-            var isvalid = $("#submitForm").valid();
-            if (!isvalid) {
-                e.preventDefault();
-                $("#error").innerHTML = "Invalid entry.";
-            }
-        });
 
         $(function () {
             $('.hidden').removeClass('hidden');
@@ -148,8 +118,27 @@
                 $('#total').html(total.toFixed(2));
             });
 
-        });
+            $("#submitForm").validate({
+                rules: {
+                    name: "required",
+                    address: "required",
+                    city: "required",
+                    state: "required",
+                    zip: "required"
+                },
+                messages: {
+                    name: "Name is required",
+                    address: "Address is required",
+                    city: "City is required",
+                    state: "State is required",
+                    zip: "Zip is required"
+                }
+            });
 
+            $('.qty').each(function () {
+                $(this).rules("add", { min: 0, digits: true });
+            });
+        });
 
     </script>
 }
