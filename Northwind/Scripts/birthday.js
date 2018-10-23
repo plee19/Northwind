@@ -27,4 +27,17 @@
             $('#' + $(this).attr('id') + 'Img').removeClass().addClass('animated bounceInDown') :
             $('#' + $(this).attr('id') + 'Img').addClass('animated bounceOutUp');
     });
+
+    // Check/uncheck all
+    $('#checkAll').click(function (e) {
+        $('input:checkbox.bx').prop('checked', this.checked);
+        $('.bx').each(function (idx) {
+            // make the image visible
+            $('#' + $(this).attr('id') + 'Img').css('visibility', 'visible');
+            // animate balloon In/Out based on checkbox
+            $(this).is(':checked') ?
+                $('#' + $(this).attr('id') + 'Img').removeClass().addClass('animated bounceInDown') :
+                $('#' + $(this).attr('id') + 'Img').addClass('animated bounceOutUp');
+        });
+    });
 });
