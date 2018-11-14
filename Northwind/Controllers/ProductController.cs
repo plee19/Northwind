@@ -43,7 +43,10 @@ namespace Northwind.Controllers
 
         public ActionResult Discount()
         {
-            return View();
+            using (NorthwindEntities db = new NorthwindEntities())
+            {
+                return View(db.Discounts.ToList());
+            }
         }
 
         // POST: Product/SearchResults
@@ -61,20 +64,20 @@ namespace Northwind.Controllers
 
         public ActionResult Unit2Project()
         {
-            //ViewBag.ProductList = Products;
+            // ViewBag.ProductList = Products;
 
             ProductContext p = new ProductContext();
             return View(p.GetAll());
         }
 
-        /*public ActionResult ProcessOrder(FormCollection form)
+        public ActionResult ProcessOrder(FormCollection form)
         {
             ViewBag.Name = form["name"];
             ViewBag.Address = form["address"];
             ViewBag.City = form["city"];
             ViewBag.State = form["state"];
             ViewBag.Zip = form["zip"];
-            List<Order> orders = new List<Order>();
+            List<Northwind.Models.Order> orders = new List<Northwind.Models.Order>();
 
             /* loop instead of the GetAll method
             Int16 qty;
@@ -87,19 +90,19 @@ namespace Northwind.Controllers
             }
             */
             // initial method to get all products
-            /*ProductContext productContext = new ProductContext();
-            List<Product> products = productContext.GetAll();
+            ProductContext productContext = new ProductContext();
+            List<Northwind.Models.Product> products = productContext.GetAll();
 
             Int16 qty;
 
-            // ProductContext productContext = new ProductContext();
+            //ProductContext productContext = new ProductContext();
             foreach (var p in products)
             {
                 //form[key]
                 if (Int16.TryParse(form[p.Id], out qty) && qty > 0)
                 {
                     // var p = productContext.Find(key);
-                    orders.Add(new Order { Prod = p, Qty = qty });
+                    orders.Add(new Northwind.Models.Order { Prod = p, Qty = qty });
                 }
             }
             Person person = new Person
@@ -112,6 +115,6 @@ namespace Northwind.Controllers
             };
 
             return View(orders);
-        }*/
+        }
     }
 }

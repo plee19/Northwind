@@ -1,8 +1,6 @@
 ﻿@using Northwind.Models;
-@model IEnumerable<Order>
+@model IEnumerable<Northwind.Models.Order>
 @{
-    /**/
-
     ViewBag.Title = "ProcessOrder";
     double total = 0.00;
 }
@@ -13,14 +11,22 @@
     <tr>
         <th colspan="4">Order Details</th>
     </tr>
-    <tr></tr>
+    <tr>
+        <th colspan="4">
+            Shipping Address<br /><br />
+            @ViewBag.Name<br />
+            @ViewBag.Address<br />
+            @ViewBag.City, @ViewBag.State @ViewBag.Zip
+        </th>
+    </tr>
     <tr>
         <th>Item</th>
         <th>Qty</th>
         <th>Unit Price</th>
         <th>Unit Total</th>
     </tr>
-    @foreach (Order o in Model)
+
+    @foreach (Northwind.Models.Order o in Model)
     {
         var subtotal = o.Prod.Price * o.Qty;
         <tr>
