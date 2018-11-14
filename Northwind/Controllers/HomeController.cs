@@ -10,10 +10,15 @@ namespace Northwind.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            using (NorthwindEntities db = new NorthwindEntities())
+            {
+                // Filter by date, return the first 3
+                DateTime now = DateTime.Now;
+                return View(db.Discounts.Where(s => s.StartTime <= now && s.EndTime >
+                now).ToList().Take(3));
+            }
         }
-
-        public ActionResult Stuff(int id = 0)
+            public ActionResult Stuff(int id = 0)
         {
             ViewBag.qty = id;
             return View();

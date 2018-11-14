@@ -54,3 +54,15 @@ a:hover,a:active,a:focus,a:visited { outline: 0; }
 .jumbotron h1 {
     text-shadow: 2px 2px 0 rgba(255,255,255,0.7), 3px 3px 4px rgba(0,0,0,0.6);
 }
+
+.product-row {
+    cursor: pointer;
+}
+
+.hr-special {
+    margin: 8px;
+}
+
+a.special {
+    cursor: pointer;
+}

@@ -4,15 +4,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Net;
 
 namespace Northwind.Controllers
 {
     public class ProductController : Controller
     {
 
+        // GET: Product/Product/1
+        public ActionResult Product(int? id)
+        {
+            // if there is no "category" id, return Http Bad Request
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            using (NorthwindEntities db = new NorthwindEntities())
+            {
+                // save the selected category name to the ViewBag
+                ViewBag.Filter = db.Categories.Find(id).CategoryName;
+                // retrieve list of products
+                return View(db.Products.Where(p => p.CategoryID == id && p.Discontinued == false).OrderBy(p => p.ProductName).ToList());
+            }
+        }
+
         public ActionResult Category()
         {
-            return View();
+            using (NorthwindEntities db = new NorthwindEntities())
+            {
+                return View(db.Categories.OrderBy(c => c.CategoryName).ToList());
+            }
         }
 
         public ActionResult Search()
@@ -25,6 +46,19 @@ namespace Northwind.Controllers
             return View();
         }
 
+        // POST: Product/SearchResults
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SearchResults(FormCollection Form)
+        {
+            string SearchString = Form["SearchString"];
+            ViewBag.Filter = "Product";
+            using (NorthwindEntities db = new NorthwindEntities())
+            {
+                return View("Product", db.Products.Where(p => p.ProductName.Contains(SearchString) && p.Discontinued == false).OrderBy(p => p.ProductName).ToList());
+            }
+        }
+
         public ActionResult Unit2Project()
         {
             //ViewBag.ProductList = Products;
@@ -33,7 +67,7 @@ namespace Northwind.Controllers
             return View(p.GetAll());
         }
 
-        public ActionResult ProcessOrder(FormCollection form)
+        /*public ActionResult ProcessOrder(FormCollection form)
         {
             ViewBag.Name = form["name"];
             ViewBag.Address = form["address"];
@@ -53,7 +87,7 @@ namespace Northwind.Controllers
             }
             */
             // initial method to get all products
-            ProductContext productContext = new ProductContext();
+            /*ProductContext productContext = new ProductContext();
             List<Product> products = productContext.GetAll();
 
             Int16 qty;
@@ -78,6 +112,6 @@ namespace Northwind.Controllers
             };
 
             return View(orders);
-        }
+        }*/
     }
 }
