@@ -31,7 +31,7 @@ namespace Northwind.Controllers
             {
                 // encrypt the password
                 customer.UserGuid = System.Guid.NewGuid();
-                UserAccount.HashSHA1(customer.Password + customer.UserGuid);
+                customer.Password = UserAccount.HashSHA1(customer.Password + customer.UserGuid);
 
                 // save to database
                 db.Customers.Add(customer);
