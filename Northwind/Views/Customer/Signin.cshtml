@@ -8,6 +8,7 @@
 <div class="well">
     <form method="post" class="form-horizontal">
         @Html.AntiForgeryToken()
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
         <!-- CompanyName List -->
         <div class="form-group">
             @Html.LabelFor(model => model.CustomerId, "Company Name", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -20,6 +21,7 @@
             @Html.LabelFor(model => model.Password, "Password", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.PasswordFor(model => model.Password, new { @class = "form-control", placeholder = "Enter Password" })
+                @*@Html.ValidationMessageFor(m=>m.Password, "", new { @class = "text-danger" })*@
             </div>
         </div>
         <!-- Submit button -->
@@ -34,3 +36,7 @@
 <div class="font-md">
     <a href="~/Home/Index"><i class="fa fa-home"></i> Home</a>
 </div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
