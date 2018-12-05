@@ -116,5 +116,72 @@ namespace Northwind.Controllers
 
             return View(orders);
         }
-    }
+
+        // /Product/FilterProducts/?SearchString=en&PriceFilter=15
+
+        public JsonResult FilterProducts(string SearchString, decimal? PriceFilter = 0)
+        {
+            using (NorthwindEntities db = new NorthwindEntities())
+            {
+                var products = db.Products
+                    .Where(p => p.UnitPrice >= PriceFilter && p.Discontinued == false)
+                    .OrderBy(pn => pn.ProductName)
+                    .Select(p => new
+                    {
+                        p.ProductID,
+                        p.ProductName,
+                        p.QuantityPerUnit,
+                        p.UnitsInStock,
+                        p.Supplier.SupplierID
+                    });
+                if (!String.IsNullOrEmpty(SearchString))
+                {
+                    products.Where(p => p.ProductName.Contains(SearchString));
+                }
+                var ProductDTO = products.ToList();
+                /*var ProductDTO = db.Products.Where(p => p.UnitPrice > PriceFilter)
+                                       .OrderBy(p => p.ProductName)
+                                       .Select(p => new
+                                       {
+                                           p.ProductID,
+                                           p.ProductName,
+                                           p.QuantityPerUnit,
+                                           p.UnitPrice,
+                                           p.UnitsInStock })
+                                           .ToList();*/
+                    return Json(ProductDTO, JsonRequestBehavior.AllowGet);
+                }                
+            }
+        }
+
+        /*// GET: Product/FilterProducts
+        public JsonResult FilterProducts(decimal? PriceFilter)
+        {
+            using (NorthwindEntities db = new NorthwindEntities())
+            {
+                var productDTO = db.Products
+               .Where(p => p.UnitPrice >= PriceFilter && p.Discontinued == false)
+               .OrderBy(pn => pn.ProductName)
+               .Select(p => new { p.ProductID,
+                   p.ProductName,
+                   p.QuantityPerUnit,
+                   p.UnitPrice,
+                   p.UnitsInStock })
+               .ToList();
+                return Json(productDTO, JsonRequestBehavior.AllowGet);
+
+                // Query Syntax
+                /*var Products = db.Products.Where(p => p.Discontinued == false).ToList();
+                var ProductDTOs = (from p in Products.Where(p => p.UnitPrice >= PriceFilter)
+                                   orderby p.ProductName
+                                   select new
+                                   {
+                                       p.ProductID,
+                                       p.ProductName,
+                                       p.QuantityPerUnit,
+                                       p.UnitPrice,
+                                       p.UnitsInStock
+                                   }).ToList();
+            }
+        }*/
 }

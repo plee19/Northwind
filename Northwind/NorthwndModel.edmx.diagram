@@ -27,6 +27,9 @@
         <AssociationConnector Association="NorthwndModel.EmployeeTerritories" ManuallyRouted="false" />
         <EntityTypeShape EntityType="NorthwndModel.Discount" Width="1.5" PointX="5.25" PointY="19.25" />
         <AssociationConnector Association="NorthwndModel.FK_Specials_Products" />
+        <EntityTypeShape EntityType="NorthwndModel.Cart" Width="1.5" PointX="5.25" PointY="10.875" />
+        <AssociationConnector Association="NorthwndModel.FK_Cart_Customers" />
+        <AssociationConnector Association="NorthwndModel.FK_Cart_Products" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

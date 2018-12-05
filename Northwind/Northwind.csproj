@@ -153,12 +153,16 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Cart.cs">
+      <DependentUpon>NorthwndModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Category.cs">
       <DependentUpon>NorthwndModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\BankController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CarController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\ColorsController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\FooController.cs" />
@@ -178,6 +182,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CartDTO.cs" />
     <Compile Include="Models\CustomerEdit.cs" />
     <Compile Include="Models\CustomerViewModel.cs" />
     <Compile Include="Models\Person.cs" />
@@ -326,10 +331,13 @@
     <Content Include="Views\Home\Results.cshtml" />
     <Content Include="Views\Product\Unit2Project.cshtml" />
     <Content Include="Views\Product\ProcessOrder.cshtml" />
-    <Content Include="Views\Product\Product.cshtml" />
+    <Content Include="Views\Product\Product.cshtml">
+      <BrowseToURL>~/Product/Product</BrowseToURL>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Cart\" />
     <Folder Include="Views\Colors\" />
     <Folder Include="Views\Hello\" />
   </ItemGroup>

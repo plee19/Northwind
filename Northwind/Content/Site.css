@@ -1,6 +1,6 @@
 ﻿body {
     padding-top: 70px;
-    padding-bottom: 170px;
+    padding-bottom: 60px;
     font-size: 1.5em;
 }
 
@@ -65,4 +65,31 @@ a:hover,a:active,a:focus,a:visited { outline: 0; }
 
 a.special {
     cursor: pointer;
+}
+
+#nav-footer {
+    border-top: 1px solid grey;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#minPrice {
+    display: inline-block;
+    width: 42px;
+    text-align: right;
+    margin-right: 8px;
+}
+
+#up, #down {
+    cursor: pointer;
+}
+
+.pad-top {
+    padding-top: 6px;
 }
