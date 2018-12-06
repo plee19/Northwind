@@ -163,6 +163,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CarController.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\ChartController.cs" />
     <Compile Include="Controllers\ColorsController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\FooController.cs" />
@@ -334,6 +335,7 @@
     <Content Include="Views\Product\Product.cshtml">
       <BrowseToURL>~/Product/Product</BrowseToURL>
     </Content>
+    <Content Include="Views\Chart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
