@@ -99,7 +99,7 @@ namespace Northwind.Controllers
             foreach (var p in products)
             {
                 //form[key]
-                if (Int16.TryParse(form[p.Id], out qty) && qty > 0)
+                if (Int16.TryParse(form[p.ProductId], out qty) && qty > 0)
                 {
                     // var p = productContext.Find(key);
                     orders.Add(new Northwind.Models.Order { Prod = p, Qty = qty });

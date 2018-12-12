@@ -180,7 +180,18 @@
 
         // attach event listener to modal window's update button
         $('#AddToCart').click(function () {
-            alert(ProductID + "|" + $('#Quantity').val());
+            // ajax POST request
+            var url = "@Url.Content("~")Cart/AddToCart";
+            var postData = "{ProductID : ProductID, CustomerID : @CustomerID, Quantity : $('#Quantity').val()}";
+            $.post(url, postData).always(function (data, textStatus, statusObject) {
+                if (statusObject == 200) {
+                    console.log($('#name_' + ProductID.html()) + ' added to cart');
+                }
+                else
+                {
+
+                }
+            });
         });
     </script>
 }
