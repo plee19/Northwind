@@ -28,8 +28,10 @@ namespace Northwind.Controllers
                         join c in db.Categories on p.CategoryID equals c.CategoryID
                         join od in db.Order_Details on p.ProductID equals od.ProductID
                         group new { p, c, od } by new { c.CategoryName } into f
-                        select new { CategoryName = f.Key.CategoryName, TotalSales = (decimal?)f.Sum(s =>
-                        s.od.Quantity * s.od.UnitPrice * (1 - s.od.Discount)) };  //Sum = (od.UnitPrice * od.Quantity * (1 - od.Discount)) };
+                        select new {
+                            CategoryName = f.Key.CategoryName,
+                            TotalSales = f.Sum(s =>
+                                s.od.Quantity * s.od.UnitPrice * (1 - s.od.Discount)) };  //Sum = (od.UnitPrice * od.Quantity * (1 - od.Discount)) };
 
                     var catInfo = categoryInfo.ToList();
 
@@ -44,7 +46,7 @@ namespace Northwind.Controllers
                         group new { p, c, od } by new { p.ProductName } into f
                         select new
                         {
-                            ProductName = f.Key.ProductName, Sum = (decimal?)f.Sum(s =>
+                            ProductName = f.Key.ProductName, Sum = f.Sum(s =>
                                 s.od.Quantity * s.od.UnitPrice * (1 - s.od.Discount))
                         };
                     var prodInfo = productInfo.ToList();
@@ -63,8 +65,8 @@ namespace Northwind.Controllers
                     group new { o, od } by new { o.OrderDate.Value.Year } into f
                     select new
                     {
-                        Year = f.Key.OrderDate.Value.Year,
-                        TotalSales = (decimal?)f.Sum(s => s.od.UnitPrice * s.od.Quantity * (1 - s.od.Discount))
+                        Year = f.Key.Year,
+                        TotalSales = f.Sum(s => s.od.UnitPrice * s.od.Quantity * (1 - s.od.Discount))
                     };
                 var yearSaleInfo = yearlySalesInfo.ToList();
                 return Json(yearSaleInfo, JsonRequestBehavior.AllowGet);
