@@ -17,27 +17,58 @@ namespace Northwind.Controllers
             }
         }
 
-        public JsonResult FilterChart(int? categoryID)
+        public JsonResult FilterChart(int? id)
         {
             using (NorthwindEntities db = new NorthwindEntities())
             {
-                var categoryInfo =
-                    from p in db.Products
-                    join c in db.Categories on p.CategoryID equals c.CategoryID
-                    join od in db.Order_Details on p.ProductID equals od.ProductID
-                    group new { p, c, od } by new { c.CategoryName } into f
-                    select new { CategoryName = f.Key.CategoryName, Sum = (decimal?)f.Sum(s => s.od.Quantity * s.od.UnitPrice * (1 - s.od.Discount)) };  //Sum = (od.UnitPrice * od.Quantity * (1 - od.Discount)) };
+                if (id == null)
+                {
+                    var categoryInfo =
+                        from p in db.Products
+                        join c in db.Categories on p.CategoryID equals c.CategoryID
+                        join od in db.Order_Details on p.ProductID equals od.ProductID
+                        group new { p, c, od } by new { c.CategoryName } into f
+                        select new { CategoryName = f.Key.CategoryName, TotalSales = (decimal?)f.Sum(s =>
+                        s.od.Quantity * s.od.UnitPrice * (1 - s.od.Discount)) };  //Sum = (od.UnitPrice * od.Quantity * (1 - od.Discount)) };
 
-                var catInfo = categoryInfo.ToList();
+                    var catInfo = categoryInfo.ToList();
 
-                return Json(catInfo, JsonRequestBehavior.AllowGet);
+                    return Json(catInfo, JsonRequestBehavior.AllowGet);
+                } else
+                {
+                    var productInfo =
+                        from p in db.Products
+                        join c in db.Categories on p.CategoryID equals c.CategoryID
+                        join od in db.Order_Details on p.ProductID equals od.ProductID
+                        where p.CategoryID == id
+                        group new { p, c, od } by new { p.ProductName } into f
+                        select new
+                        {
+                            ProductName = f.Key.ProductName, Sum = (decimal?)f.Sum(s =>
+                                s.od.Quantity * s.od.UnitPrice * (1 - s.od.Discount))
+                        };
+                    var prodInfo = productInfo.ToList();
+                    return Json(prodInfo, JsonRequestBehavior.AllowGet);
+                }
             } 
         }
 
-        // GET: Chart/1
-        /*public JsonResult Chart(int id)
+        public JsonResult YearlySales()
         {
-
-        }*/
+            using (NorthwindEntities db = new NorthwindEntities())
+            {
+                var yearlySalesInfo =
+                    from o in db.Orders
+                    join od in db.Order_Details on o.OrderID equals od.OrderID
+                    group new { o, od } by new { o.OrderDate.Value.Year } into f
+                    select new
+                    {
+                        Year = f.Key.OrderDate.Value.Year,
+                        TotalSales = (decimal?)f.Sum(s => s.od.UnitPrice * s.od.Quantity * (1 - s.od.Discount))
+                    };
+                var yearSaleInfo = yearlySalesInfo.ToList();
+                return Json(yearSaleInfo, JsonRequestBehavior.AllowGet);
+            }
+        }
     }
 }
